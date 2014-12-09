@@ -8,8 +8,13 @@ public class Controleur {
 	
 	private Combat combat;
 	private Vue vue;
-	int joueur = 0;
-	int creature = 0;
+	private int joueur;
+	private int creature;
+	
+	public Controleur(){
+		joueur = 0;
+		creature = 0;
+	}
 	
 	/**
 	 * Utilise switchpanel pour définir le JPanel affiché
