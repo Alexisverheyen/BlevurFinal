@@ -17,7 +17,7 @@ public class Combat {
 		abandon = false;
 		tousMort = false;
 	}
-
+ 
 	public void setChoixAtk(int choixAtk) {
 		this.choixAtk = choixAtk;
 	}
@@ -180,15 +180,15 @@ public class Combat {
 			break;
 
 		case 2:
-			setDamage(randInt(20,30));
+			setDamage(randInt(10,30));
 			break;
 
 		case 3:
-			setDamage(randInt(30,40));
+			setDamage(randInt(20,40));
 			break;
 
 		case 4:
-			setDamage(randInt(45,55));
+			setDamage(randInt(40,60));
 			break;
 	}
 
