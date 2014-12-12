@@ -11,13 +11,13 @@ public class Combat {
 	private int damage;
 	private Joueur gagnant;
 	public boolean abandon;
-	public boolean tousMort;
+	public boolean tousMort; //peut être amélioré : remplacer abandon pas tousmort
 	
 	public Combat(){
 		abandon = false;
 		tousMort = false;
 	}
-
+ 
 	public void setChoixAtk(int choixAtk) {
 		this.choixAtk = choixAtk;
 	}

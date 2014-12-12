@@ -24,6 +24,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import Vue.*;
+
 import java.awt.Font;
 
 public class JPanelChoix extends JPanel {

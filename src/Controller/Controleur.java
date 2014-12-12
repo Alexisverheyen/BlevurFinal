@@ -11,17 +11,17 @@ public class Controleur {
 	private int joueur;
 	private int creature;
 	
-	public Controleur(){
-		joueur = 0;
-		creature = 0;
-	}
-	
 	/**
 	 * Utilise switchpanel pour définir le JPanel affiché
 	 */
 	public void setVue(Vue vue){
 		this.vue = vue;
 		vue.switchPanel(0);
+	}
+	
+	public Controleur(){
+		this.joueur = 0;
+		this.creature = 0;
 	}
 
 	public Controleur(Combat combat) {	

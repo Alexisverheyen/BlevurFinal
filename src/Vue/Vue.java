@@ -1,7 +1,6 @@
 package Vue;
 
 import java.awt.BorderLayout;
-
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -31,6 +30,7 @@ import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Observer;
+
 import Controller.*;
 import Jeu.*;
 
