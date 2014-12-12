@@ -83,9 +83,11 @@ public class Controleur {
 	 * Change les créatures et finit le tour
 	 */
 	public void changerCrea(){
-		if (!combat.getJoueurActif().team[1].isKO()) combat.changerCreature(combat.getJoueurActif());
-		combat.changerJoueur();
-		vue.switchPanel(2);
+		if (!combat.getJoueurActif().team[1].isKO()) {
+			combat.changerCreature(combat.getJoueurActif());
+			combat.changerJoueur();
+			vue.switchPanel(2);
+		}
 	} 
 	
 	/**
