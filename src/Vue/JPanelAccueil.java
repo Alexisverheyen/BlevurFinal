@@ -32,8 +32,10 @@ import java.awt.event.MouseEvent;
 
 import Controller.*;
 import Jeu.*;
+import javax.swing.JTextField;
 
 public class JPanelAccueil extends JPanel {
+	private JTextField txtNewGame;
 	
 	/**
 	 * Panneau d'accueil, avec le bouton nouveau jeu
@@ -45,10 +47,22 @@ public class JPanelAccueil extends JPanel {
 		setSize(600,600);
 		setOpaque(false);
 		
-		Font OSU = new Font("Old School United Stencil", Font.PLAIN, 60);
+		Font OSU = new Font("Old School United Stencil", Font.PLAIN, 40);
 		
-		JButton btnNewGame = new JButton("NEW GAME");
-		btnNewGame.setBounds(150, 400, 300, 100);
+		txtNewGame = new JTextField();
+		txtNewGame.setHorizontalAlignment(SwingConstants.CENTER);
+		txtNewGame.setText("NEW GAME");
+		txtNewGame.setBounds(175, 300, 250, 50);
+		txtNewGame.setFont(OSU);
+		txtNewGame.setOpaque(false);
+		txtNewGame.setEditable(false); 
+		txtNewGame.setBorder(null);
+		txtNewGame.setForeground(Color.WHITE);
+		add(txtNewGame);
+		txtNewGame.setColumns(10);
+		
+		JButton btnNewGame = new JButton("LOCAL");
+		btnNewGame.setBounds(175, 400, 250, 50);
 		btnNewGame.setFont(OSU);
 		btnNewGame.setForeground(Color.WHITE);
 		btnNewGame.setOpaque(false);
@@ -59,6 +73,21 @@ public class JPanelAccueil extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				controleur.start();
+			}
+		});
+		
+		JButton btnLAN = new JButton("RESEAU");
+		btnLAN.setBounds(175, 500, 250, 50);
+		btnLAN.setFont(OSU);
+		btnLAN.setForeground(Color.white);
+		btnLAN.setOpaque(false);
+		btnLAN.setContentAreaFilled(false);
+		btnLAN.setBorderPainted(true);
+		add(btnLAN);
+		btnLAN.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				controleur.lan();
 			}
 		});
 		

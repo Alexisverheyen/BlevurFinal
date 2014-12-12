@@ -40,7 +40,6 @@ public class JPanelChoix extends JPanel {
 		setBackground(Color.GRAY);
 		this.setSize(600,600);
 		setLayout(null);
-		
 		Font OSU20 = new Font("Old School United Stencil", Font.PLAIN, 20);
 		
 		JPanel panel_1 = new JPanel();
@@ -49,19 +48,20 @@ public class JPanelChoix extends JPanel {
 		panel_1.setLayout(null);
 		
 		JButton btnRetour = new JButton("RETOUR");
-		btnRetour.setBounds(520, 5, 75, 30);
+		btnRetour.setBounds(495, 5, 100, 30);
 		panel_1.add(btnRetour);
-		
-		JLabel lblinfos = new JLabel("Choix des cr\u00E9atures");
-		lblinfos.setHorizontalAlignment(SwingConstants.CENTER);
-		lblinfos.setBounds(50, 5, 400, 30);
-		panel_1.add(lblinfos);
 		btnRetour.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				controleur.retour();
 			}
 		});
+		
+		JLabel lblinfos = new JLabel();
+		lblinfos.setText("Le joueur " + (controleur.getJoueur()+1) + " doit choisir sa creature " + (controleur.getCreature()+1));
+		lblinfos.setHorizontalAlignment(SwingConstants.CENTER);
+		lblinfos.setBounds(50, 5, 400, 30);
+		panel_1.add(lblinfos);
 		
 		JPanel panel = new JPanel();
 		panel.setLocation(0, 40);
@@ -82,7 +82,8 @@ public class JPanelChoix extends JPanel {
 		btnEau.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				controleur.creatureChoisie(1);				
+				controleur.creatureChoisie(1);
+				lblinfos.setText("Le joueur " + (controleur.getJoueur()+1) + " doit choisir sa creature " + (controleur.getCreature()+1));
 			}
 		});
 	
@@ -113,6 +114,7 @@ public class JPanelChoix extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				controleur.creatureChoisie(2);
+				lblinfos.setText("Le joueur " + (controleur.getJoueur()+1) + " doit choisir sa creature " + (controleur.getCreature()+1));
 			}
 		});
 		
@@ -142,6 +144,7 @@ public class JPanelChoix extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				controleur.creatureChoisie(3);
+				lblinfos.setText("Le joueur " + (controleur.getJoueur()+1) + " doit choisir sa creature " + (controleur.getCreature()+1));
 			}
 		});
 		
@@ -171,6 +174,7 @@ public class JPanelChoix extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				controleur.creatureChoisie(4);
+				lblinfos.setText("Le joueur " + (controleur.getJoueur()+1) + " doit choisir sa creature " + (controleur.getCreature()+1));
 			}
 		});
 		

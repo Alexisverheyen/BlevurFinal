@@ -33,7 +33,7 @@ public class Vue extends JFrame {
 		this.setTitle("BLEVUR ©");
 		this.combat = combat;
 		this.controleur = controleur;
-		panels = new JPanel[5];
+		panels = new JPanel[6];
 	}
 	
 	/*
@@ -56,6 +56,10 @@ public class Vue extends JFrame {
 						break;
 				
 			case 4 :	panels[4] = new JPanelFin(combat, controleur);
+						break;
+			
+			case 5 :	panels[5] = new JPanelClientServeur(controleur);
+						break;
 						
 		}
 		this.setContentPane(panels[numPanel]);	

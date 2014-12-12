@@ -6,6 +6,22 @@ import Jeu.*;
 
 public class Controleur {
 	
+	public int getJoueur() {
+		return joueur;
+	}
+
+	public void setJoueur(int joueur) {
+		this.joueur = joueur;
+	}
+
+	public int getCreature() {
+		return creature;
+	}
+
+	public void setCreature(int creature) {
+		this.creature = creature;
+	}
+
 	private Combat combat;
 	private Vue vue;
 	private int joueur;
@@ -40,6 +56,10 @@ public class Controleur {
 	public void start(){
 		combat.creationParticipant();
 		vue.switchPanel(1);
+	}
+	
+	public void lan(){
+		vue.switchPanel(5);
 	}
 	
 	/**
@@ -117,4 +137,5 @@ public class Controleur {
 			}		
 		}
 	}
+
 }
