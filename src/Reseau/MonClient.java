@@ -9,15 +9,17 @@ public class MonClient extends Socket implements Runnable{
 	private String info;
 	private Socket Client;
 	private int port;
+	private String ip;
 	
-	public MonClient(int port) throws Exception {
-		super(InetAddress.getLocalHost(), port);
+	public MonClient(String ip, int port) throws Exception {
+		super(ip, port);
 		this.port = port;
+		this.ip= ip;
 	}
 	
 	public void creerClient(){
 		try{
-			this.Client = new Socket(InetAddress.getLocalHost(), this.port);
+			this.Client = new Socket(this.ip, this.port);
 			System.out.println("zudfgh");
 		} catch (Exception e) {
 			System.out.println("erreur creation client");

@@ -157,9 +157,9 @@ public class Controleur {
 		serv.start();
 	}
 	
-	public void connexionClient(int port){
+	public void connexionClient(String ip,int port){
 		try{
-			client = new MonClient(port);
+			client = new MonClient(ip, port);
 			System.out.println("client connecté");
 		}catch (Exception e){
 			System.out.println("erreur creation Client");

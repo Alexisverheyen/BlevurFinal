@@ -13,7 +13,9 @@ import javax.swing.JTextField;
 
 public class JPanelClientServeur extends JPanel {
 	private JTextField textPort;
+	private JTextField textIP;
 	private int numPort;
+	private String ip;
 
 	/**
 	 * Create the panel.
@@ -44,7 +46,8 @@ public class JPanelClientServeur extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				numPort = Integer.parseInt(textPort.getText());
-				controleur.connexionClient(numPort);
+				ip = textIP.getText();
+				controleur.connexionClient(ip, numPort);
 				if(controleur.isConnected()) controleur.start();
 			}
 		});
@@ -62,9 +65,14 @@ public class JPanelClientServeur extends JPanel {
 		});
 		
 		textPort = new JTextField();
-		textPort.setBounds(200, 187, 190, 20);
+		textPort.setBounds(200, 187, 65, 20);
 		panel.add(textPort);
 		textPort.setColumns(10);
+		
+		textIP = new JTextField();
+		textIP.setBounds(160, 104, 268, 20);
+		panel.add(textIP);
+		textIP.setColumns(10);
 		
 		JLabel lblfond = new JLabel("New label");
 		lblfond.setIcon(new ImageIcon("Images\\fondChoix.png"));
