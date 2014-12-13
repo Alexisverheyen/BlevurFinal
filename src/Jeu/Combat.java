@@ -27,8 +27,8 @@ public class Combat {
 	 */
 	public void creationParticipant(){
 		tabJoueurs = new Joueur[2];
-		tabJoueurs[0] = new Joueur("Joueur1");
-		tabJoueurs[1] = new Joueur("Joueur2");
+		tabJoueurs[0] = new Joueur("Joueur 1");
+		tabJoueurs[1] = new Joueur("Joueur 2");
 		joueurActif = tabJoueurs[0];
 		joueurPassif = tabJoueurs[1];
 	}
@@ -77,9 +77,10 @@ public class Combat {
 	 * Ajoute 25pv a la créature, maximum 100pv
 	 */
 	public void repos() {
-		getJoueurActif().getTeam()[0].setPv(getJoueurActif().getTeam()[0].getPv()+25);
+		getJoueurActif().getTeam()[0].setPv(getJoueurActif().getTeam()[0].getPv()+randInt(10,30));
 		
-		if (getJoueurActif().getTeam()[0].getPv() > 100) getJoueurActif().getTeam()[0].setPv(100);
+		if (getJoueurActif().getTeam()[0].getPv() > 100) 
+				getJoueurActif().getTeam()[0].setPv(100);
 	}
 	
 	/**

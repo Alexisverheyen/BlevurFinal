@@ -42,37 +42,25 @@ public class JPanelChoix extends JPanel {
 		setLayout(null);
 		Font OSU20 = new Font("Old School United Stencil", Font.PLAIN, 20);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(0, 0, 600, 40);
-		add(panel_1);
-		panel_1.setLayout(null);
-		
-		JButton btnRetour = new JButton("RETOUR");
-		btnRetour.setBounds(495, 5, 100, 30);
-		panel_1.add(btnRetour);
-		btnRetour.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				controleur.retour();
-			}
-		});
-		
-		JLabel lblinfos = new JLabel();
-		lblinfos.setText("Le joueur " + (controleur.getJoueur()+1) + " doit choisir sa creature " + (controleur.getCreature()+1));
-		lblinfos.setHorizontalAlignment(SwingConstants.CENTER);
-		lblinfos.setBounds(50, 5, 400, 30);
-		panel_1.add(lblinfos);
-		
 		JPanel panel = new JPanel();
-		panel.setLocation(0, 40);
+		panel.setLocation(0, 0);
 		panel.setBackground(Color.LIGHT_GRAY);
-		panel.setSize(600, 560);
+		panel.setSize(600, 600);
 		this.setOpaque(false);
 		add(panel);
 		panel.setLayout(null);
 		
+		JLabel lblinfos = new JLabel();
+		lblinfos.setBounds(40, 5, 400, 30);
+		panel.add(lblinfos);
+		lblinfos.setText("Le joueur " + (controleur.getJoueur()+1) + " doit choisir sa creature " + (controleur.getCreature()+1));
+		lblinfos.setFont(OSU20);
+		lblinfos.setOpaque(false);
+		lblinfos.setForeground(Color.white);
+		lblinfos.setHorizontalAlignment(SwingConstants.CENTER);
+		
 		JButton btnEau = new JButton("CHOISIR");
-		btnEau.setBounds(25, 30, 150, 80);
+		btnEau.setBounds(25, 70, 150, 80);
 		panel.add(btnEau);
 		btnEau.setFont(OSU20);
 		btnEau.setForeground(Color.WHITE);
@@ -88,7 +76,7 @@ public class JPanelChoix extends JPanel {
 		});
 	
 		JLabel lblIco = new JLabel();
-		lblIco.setBounds(200, 0, 200, 140);
+		lblIco.setBounds(200, 40, 200, 140);
 		lblIco.setHorizontalAlignment(SwingConstants.CENTER);
 		lblIco.setIcon(new ImageIcon("Images\\eau.gif"));
 		panel.add(lblIco);
@@ -96,14 +84,14 @@ public class JPanelChoix extends JPanel {
 		JTextPane Info1 = new JTextPane();
 		Info1.setFont(OSU20);
 		Info1.setForeground(Color.WHITE);
-		Info1.setBounds(400, 40, 200, 50);
+		Info1.setBounds(400, 80, 200, 50);
 		Info1.setEditable(false); 
 		Info1.setText("Nom : Seismitoad\nType : Eau");
 		Info1.setOpaque(false);
 		panel.add(Info1);
 		
 		JButton btnFeu = new JButton("CHOISIR");
-		btnFeu.setBounds(25, 170, 150, 80);
+		btnFeu.setBounds(25, 210, 150, 80);
 		panel.add(btnFeu);
 		btnFeu.setFont(OSU20);
 		btnFeu.setForeground(Color.WHITE);
@@ -119,7 +107,7 @@ public class JPanelChoix extends JPanel {
 		});
 		
 		JLabel lblIco2 = new JLabel();
-		lblIco2.setBounds(200, 140, 200, 140);
+		lblIco2.setBounds(200, 180, 200, 140);
 		lblIco2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblIco2.setIcon(new ImageIcon("Images\\feu.gif"));
 		panel.add(lblIco2);
@@ -127,13 +115,13 @@ public class JPanelChoix extends JPanel {
 		JTextPane Info2 = new JTextPane();
 		Info2.setFont(OSU20);
 		Info2.setForeground(Color.WHITE);
-		Info2.setBounds(400, 180, 200, 50);
+		Info2.setBounds(400, 220, 200, 50);
 		Info2.setText("Nom : Emboar\nType : Feu");
 		Info2.setOpaque(false);
 		panel.add(Info2);
 		
 		JButton btnPlante = new JButton("CHOISIR");
-		btnPlante.setBounds(25, 310, 150, 80);
+		btnPlante.setBounds(25, 350, 150, 80);
 		panel.add(btnPlante);
 		btnPlante.setFont(OSU20);
 		btnPlante.setForeground(Color.WHITE);
@@ -149,7 +137,7 @@ public class JPanelChoix extends JPanel {
 		});
 		
 		JLabel lblIco3 = new JLabel();
-		lblIco3.setBounds(200, 280, 200, 140);
+		lblIco3.setBounds(200, 320, 200, 140);
 		lblIco3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblIco3.setIcon(new ImageIcon("Images\\plante.gif"));
 		panel.add(lblIco3);
@@ -157,13 +145,13 @@ public class JPanelChoix extends JPanel {
 		JTextPane Info3 = new JTextPane();
 		Info3.setFont(OSU20);
 		Info3.setForeground(Color.WHITE);
-		Info3.setBounds(400, 460, 200, 50);
+		Info3.setBounds(400, 500, 200, 50);
 		Info3.setOpaque(false);
 		panel.add(Info3);
 		Info3.setText("Nom : Torterra\nType : Plante");
 		
 		JButton btnNormal = new JButton("CHOISIR");
-		btnNormal.setBounds(25, 450, 150, 80);
+		btnNormal.setBounds(25, 490, 150, 80);
 		panel.add(btnNormal);
 		btnNormal.setFont(OSU20);
 		btnNormal.setForeground(Color.WHITE);
@@ -179,7 +167,7 @@ public class JPanelChoix extends JPanel {
 		});
 		
 		JLabel lblIco4 = new JLabel();
-		lblIco4.setBounds(200, 420, 200, 140);
+		lblIco4.setBounds(200, 460, 200, 140);
 		lblIco4.setHorizontalAlignment(SwingConstants.CENTER);
 		lblIco4.setIcon(new ImageIcon("Images\\normal.gif"));
 		panel.add(lblIco4);
@@ -187,16 +175,28 @@ public class JPanelChoix extends JPanel {
 		JTextPane Info4 = new JTextPane();
 		Info4.setFont(OSU20);
 		Info4.setForeground(Color.WHITE);
-		Info4.setBounds(400, 320, 200, 50);
+		Info4.setBounds(400, 360, 200, 50);
 		panel.add(Info4);
 		Info4.setText("Nom : Bouffalant \nType : Normal");
 		Info4.setOpaque(false);
 		
+		JButton btnRetour = new JButton("RETOUR");
+		btnRetour.setBounds(495, 5, 100, 30);
+		btnRetour.setOpaque(false);
+		btnRetour.setFont(OSU20);
+		panel.add(btnRetour);
+		
 		JLabel lblFond = new JLabel("Fond");
-		lblFond.setBounds(0, 0, 600, 560);
+		lblFond.setBounds(0, 0, 600, 600);
 		lblFond.setIcon(new ImageIcon("Images\\fondChoix.png"));
 		lblFond.setOpaque(false);
 		panel.add(lblFond);
+		btnRetour.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				controleur.retour();
+			}
+		});
 	}
 }
 

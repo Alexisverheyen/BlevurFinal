@@ -1,22 +1,13 @@
 package Vue;
 
 
-import javax.swing.JPanel;
+import javax.swing.*;
 
-import java.awt.Color;
-import java.awt.Font;
-
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.SwingConstants;
-
-import Controller.Controleur;
-import Jeu.Combat;
-
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import Controller.*;
 import Jeu.*;
 
 public class JPanelCombat extends JPanel {
@@ -117,7 +108,7 @@ public class JPanelCombat extends JPanel {
 		panel.add(btnAttaquer);
 		btnAttaquer.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseClicked(MouseEvent arg0) {
 				controleur.attaquer();
 			}
 		});
@@ -145,7 +136,7 @@ public class JPanelCombat extends JPanel {
 		btnChanger.setBorderPainted(true);
 		btnChanger.setBounds(0, 100, 150, 100);
 		panel.add(btnChanger);
-		btnChanger.addMouseListener(new MouseAdapter() {
+		btnChanger.addMouseListener(new MouseAdapter(){
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				controleur.changerCrea();
@@ -160,7 +151,7 @@ public class JPanelCombat extends JPanel {
 		btnAbandon.setBorderPainted(true);
 		btnAbandon.setBounds(150, 100, 150, 100);
 		panel.add(btnAbandon);
-		btnAbandon.addMouseListener(new MouseAdapter() {
+		btnAbandon.addMouseListener(new MouseAdapter(){
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				controleur.abandonner();
@@ -208,9 +199,7 @@ public class JPanelCombat extends JPanel {
 		lblDejouer.setFont(OSU25);
 		lblDejouer.setBounds(300, 160, 300, 30);
 		panel.add(lblDejouer);
-		
-		
-		
+				
 		JLabel lblbgd = new JLabel("");
 		lblbgd.setIcon(new ImageIcon("Images\\fondChoix.png"));
 		lblbgd.setBounds(0, 0, 600, 200);

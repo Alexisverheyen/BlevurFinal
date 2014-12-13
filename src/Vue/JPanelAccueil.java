@@ -29,9 +29,11 @@ import Jeu.Combat;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Timer;
 
 import Controller.*;
 import Jeu.*;
+
 import javax.swing.JTextField;
 
 public class JPanelAccueil extends JPanel {
@@ -43,6 +45,9 @@ public class JPanelAccueil extends JPanel {
 	 * @param controleur permet d'accéder aux méthodes du controleur
 	 */
 	public JPanelAccueil(Combat combat, Controleur controleur) {
+		
+		
+		
 		setLayout(null);
 		setSize(600,600);
 		setOpaque(false);

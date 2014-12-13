@@ -1,10 +1,20 @@
 package Controller;
 
+
+import Reseau.*;
 import Vue.*;
 import Jeu.*;
 
 
+
 public class Controleur {
+	
+	private MonServeur serveur;
+	private MonClient client;
+	private Combat combat;
+	private Vue vue;
+	private int joueur;
+	private int creature;
 	
 	public int getJoueur() {
 		return joueur;
@@ -21,11 +31,6 @@ public class Controleur {
 	public void setCreature(int creature) {
 		this.creature = creature;
 	}
-
-	private Combat combat;
-	private Vue vue;
-	private int joueur;
-	private int creature;
 	
 	/**
 	 * Utilise switchpanel pour définir le JPanel affiché
@@ -58,10 +63,6 @@ public class Controleur {
 		vue.switchPanel(1);
 	}
 	
-	public void lan(){
-		vue.switchPanel(5);
-	}
-	
 	/**
 	 * Permet de remplir les tableaux de créature de chaque joueur
 	 * pendant les choix de créature sur le JPanel choix
@@ -84,13 +85,6 @@ public class Controleur {
 	}
 	
 	/**
-	 * Affiche le JPanelAttaques lorsqu'on clique sur le bouton attaquer
-	 */
-	public void attaquer(){
-		vue.switchPanel(3);
-	}
-	
-	/**
 	 * Lance la méthode de repos et finit le tour
 	 */
 	public void repos(){
@@ -110,15 +104,6 @@ public class Controleur {
 		}
 	} 
 	
-	/**
-	 * Le joueur actif abandonne, donc le joueur passif est indiqué comme gagnant.
-	 * Passe sur le JPanel de fin
-	 */
-	public void abandonner(){
-		combat.setGagnant(combat.getJoueurPassif());
-		vue.switchPanel(4);
-	}
-	
 	public void attaqueChoisie(int choix){
 		combat.setChoixAtk(choix);
 		
@@ -128,6 +113,7 @@ public class Controleur {
 			
 			if (combat.tousMort) {
 				combat.setGagnant(combat.getJoueurActif());
+				fermerConnection();
 				vue.switchPanel(4);
 			}
 			
@@ -137,5 +123,73 @@ public class Controleur {
 			}		
 		}
 	}
+	
+	
+	/**
+	 * Affiche le JPanelAttaques lorsqu'on clique sur le bouton attaquer
+	 */
+	public void attaquer(){
+		vue.switchPanel(3);
+	}
+	
+	/**
+	 * Le joueur actif abandonne, donc le joueur passif est indiqué comme gagnant.
+	 * Passe sur le JPanel de fin
+	 */
+	public void abandonner(){
+		combat.setGagnant(combat.getJoueurPassif());
+		vue.switchPanel(4);
+	}
 
+	public void lan(){
+		vue.switchPanel(5);
+	}
+	
+	public void connexionServeur(int port){
+		try{
+			serveur = new MonServeur(port);
+			System.out.println("Serveur créé");
+		} catch (Exception e){
+			System.out.println("Erreur connexion serveur");
+			}
+		
+		Thread serv = new Thread(serveur);
+		serv.start();
+	}
+	
+	public void connexionClient(int port){
+		try{
+			client = new MonClient(port);
+			System.out.println("client connecté");
+		}catch (Exception e){
+			System.out.println("erreur creation Client");
+		}
+		
+		Thread cli = new Thread(client);
+		cli.start();
+	}
+	
+	public void fermerConnection(){
+		try{
+			serveur.close();
+			client.close();
+		}catch (Exception e) {
+			System.out.println("erreur lors de la fermeture de la connection");
+		}
+	}
+	
+	public boolean isConnected(){
+		if(serveur.getClient().isConnected()){
+			return true;
+		}
+		return false;
+	}
+
+	public MonServeur getServeur() {
+		return serveur;
+	}
+
+	public MonClient getClient() {
+		return client;
+	}
 }

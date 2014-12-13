@@ -9,13 +9,17 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 import Controller.Controleur;
+import javax.swing.JTextField;
 
 public class JPanelClientServeur extends JPanel {
+	private JTextField textPort;
+	private int numPort;
 
 	/**
 	 * Create the panel.
 	 */
 	public JPanelClientServeur(Controleur controleur) {
+		
 		setSize(600,600);
 		setLayout(null);
 		
@@ -24,26 +28,46 @@ public class JPanelClientServeur extends JPanel {
 		add(panel);
 		panel.setLayout(null);
 		
-		JButton btnServeur = new JButton("Serveur");
-		btnServeur.setBounds(200, 200, 200, 50);
+		JButton btnServeur = new JButton("Cr\u00E9er un serveur");
+		btnServeur.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				numPort = Integer.parseInt(textPort.getText());
+				controleur.connexionServeur(numPort);
+			}
+		});
+		btnServeur.setBounds(200, 257, 200, 50);
 		panel.add(btnServeur);
 		
-		JButton btnClient = new JButton("Client");
+		JButton btnClient = new JButton("Rejoindre");
+		btnClient.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				numPort = Integer.parseInt(textPort.getText());
+				controleur.connexionClient(numPort);
+				if(controleur.isConnected()) controleur.start();
+			}
+		});
 		btnClient.setBounds(200, 350, 200, 50);
 		panel.add(btnClient);
 		
 		JButton btnRetour = new JButton("RETOUR");
 		btnRetour.setBounds(495, 5, 100, 30);
 		panel.add(btnRetour);
-		btnRetour.addMouseListener(new MouseAdapter() {
+		btnRetour.addMouseListener(new MouseAdapter(){
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				controleur.retour();
 			}
 		});
 		
+		textPort = new JTextField();
+		textPort.setBounds(200, 187, 190, 20);
+		panel.add(textPort);
+		textPort.setColumns(10);
+		
 		JLabel lblfond = new JLabel("New label");
-		lblfond.setIcon(new ImageIcon("C:\\Users\\Pierre\\workspace\\BlevurFinal\\Images\\fondChoix.png"));
+		lblfond.setIcon(new ImageIcon("Images\\fondChoix.png"));
 		lblfond.setBounds(0, 0, 600, 600);
 		panel.add(lblfond);
 
