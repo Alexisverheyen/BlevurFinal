@@ -20,7 +20,6 @@ public class MonClient extends Socket implements Runnable{
 	public void creerClient(){
 		try{
 			this.Client = new Socket(this.ip, this.port);
-			System.out.println("zudfgh");
 		} catch (Exception e) {
 			System.out.println("erreur creation client");
 			}
@@ -63,6 +62,9 @@ public class MonClient extends Socket implements Runnable{
 		
 		while (Client == null){
 			creerClient();
+			try { 
+				Thread.sleep(200); 
+			} catch (Exception e){}
 		}
 		
 		while (!Client.isClosed()){

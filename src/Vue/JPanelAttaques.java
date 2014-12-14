@@ -34,6 +34,12 @@ public class JPanelAttaques extends JPanel {
 		Font OSU50 = new Font("Old School United Stencil", Font.PLAIN, 50);
 		Font OSU25 = new Font("Old School United Stencil", Font.PLAIN, 20);	
 		Font OSU30 = new Font("Old School United Stencil", Font.PLAIN, 30);
+			
+		JLabel lblexplo = new JLabel("");
+		lblexplo.setBounds(372, 11, 155, 154);
+		lblexplo.setIcon(new ImageIcon("Images\\explo.gif"));
+		lblexplo.setVisible(false);
+		add(lblexplo);
 		
 		JLabel lblCreajoueur1 = new JLabel("");
 		lblCreajoueur1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -122,8 +128,23 @@ public class JPanelAttaques extends JPanel {
 		btnAtk1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
+				try {
+					Thread.sleep(200);
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				controleur.attaqueChoisie(1);
 			}
+			@Override
+			public void mousePressed(MouseEvent e) {
+				lblexplo.setVisible(true);
+			}
+			/*@Override
+			public void mouseReleased(MouseEvent arg0) {
+				lblexplo.setVisible(false);
+			}
+			*/
 		});
 		
 		JButton btnAtk2 = new JButton();
@@ -170,17 +191,17 @@ public class JPanelAttaques extends JPanel {
 		panel.add(btnAtk4);
 		btnAtk4.setText("<html>" + combat.getJoueurActif().team[0].getAttaques(3) + 
 				" <br>(" + combat.getJoueurActif().getTeam()[0].getNbAtkDispo(3) + "/1)</html>");
-		
-		JLabel lblfond = new JLabel("");
-		lblfond.setBounds(0, 0, 600, 200);
-		lblfond.setOpaque(false);
-		lblfond.setIcon(new ImageIcon("Images\\fondChoix.png"));
-		panel.add(lblfond);
 		btnAtk4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				controleur.attaqueChoisie(4);
 			}
 		});
+		
+		JLabel lblfond = new JLabel("");
+		lblfond.setBounds(0, 0, 600, 200);
+		lblfond.setOpaque(false);
+		lblfond.setIcon(new ImageIcon("Images\\fondChoix.png"));
+		panel.add(lblfond);
 	}
 }

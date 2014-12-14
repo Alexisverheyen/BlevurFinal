@@ -160,7 +160,9 @@ public class Controleur {
 	public void connexionClient(String ip,int port){
 		try{
 			client = new MonClient(ip, port);
-			System.out.println("client connecté");
+			if(client.isConnected()){
+				System.out.println("Client connecté connexionClient");
+			}
 		}catch (Exception e){
 			System.out.println("erreur creation Client");
 		}
@@ -172,7 +174,7 @@ public class Controleur {
 	public void fermerConnection(){
 		try{
 			serveur.close();
-			client.close();
+			serveur.getClient().close();
 		}catch (Exception e) {
 			System.out.println("erreur lors de la fermeture de la connection");
 		}

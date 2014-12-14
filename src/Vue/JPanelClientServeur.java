@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 import Controller.Controleur;
+
 import javax.swing.JTextField;
 
 public class JPanelClientServeur extends JPanel {
@@ -48,6 +49,12 @@ public class JPanelClientServeur extends JPanel {
 				numPort = Integer.parseInt(textPort.getText());
 				ip = textIP.getText();
 				controleur.connexionClient(ip, numPort);
+				try {
+					Thread.sleep(20000);
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				if(controleur.isConnected()) controleur.start();
 			}
 		});
