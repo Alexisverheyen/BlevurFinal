@@ -14,6 +14,9 @@ import javax.swing.SwingConstants;
 
 import Controller.Controleur;
 import Jeu.Combat;
+import javax.swing.JButton;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class JPanelFin extends JPanel {
 	
@@ -51,5 +54,19 @@ public class JPanelFin extends JPanel {
 		lblAGagn.setForeground(Color.WHITE);
 		lblAGagn.setBounds(0, 350, 600, 20);
 		this.add(lblAGagn);
+		
+		JButton btnRejouer = new JButton("REJOUER");
+		btnRejouer.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				controleur.retour();
+			}
+		});
+		btnRejouer.setHorizontalAlignment(SwingConstants.CENTER);
+		btnRejouer.setForeground(Color.WHITE);
+		btnRejouer.setBackground(Color.black);
+		btnRejouer.setOpaque(false);
+		btnRejouer.setBounds(225, 420, 150, 35);
+		add(btnRejouer);
 	}
 }
