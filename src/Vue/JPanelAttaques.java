@@ -1,9 +1,6 @@
 package Vue;
 
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.SwingConstants;
+import javax.swing.*;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -18,9 +15,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.TimerTask;
+import java.util.Timer;
 
 public class JPanelAttaques extends JPanel {
 
+	private Timer timer = new Timer();
+	private JLabel lblexplo;
 	
 	/**
 	 * Panneau des attaques, avec les 4 boutons d'attaque
@@ -35,10 +36,8 @@ public class JPanelAttaques extends JPanel {
 		Font OSU25 = new Font("Old School United Stencil", Font.PLAIN, 20);	
 		Font OSU30 = new Font("Old School United Stencil", Font.PLAIN, 30);
 			
-		JLabel lblexplo = new JLabel("");
+		lblexplo = new JLabel("");
 		lblexplo.setBounds(372, 11, 155, 154);
-		lblexplo.setIcon(new ImageIcon("Images\\explo.gif"));
-		lblexplo.setVisible(false);
 		add(lblexplo);
 		
 		JLabel lblCreajoueur1 = new JLabel("");
@@ -128,23 +127,8 @@ public class JPanelAttaques extends JPanel {
 		btnAtk1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				try {
-					Thread.sleep(200);
-				} catch (InterruptedException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
 				controleur.attaqueChoisie(1);
 			}
-			@Override
-			public void mousePressed(MouseEvent e) {
-				lblexplo.setVisible(true);
-			}
-			/*@Override
-			public void mouseReleased(MouseEvent arg0) {
-				lblexplo.setVisible(false);
-			}
-			*/
 		});
 		
 		JButton btnAtk2 = new JButton();
@@ -203,5 +187,16 @@ public class JPanelAttaques extends JPanel {
 		lblfond.setOpaque(false);
 		lblfond.setIcon(new ImageIcon("Images\\fondChoix.png"));
 		panel.add(lblfond);
+	}
+	
+	public void gifExplosion(){
+		timer.schedule(new TimerTask(){
+			@Override
+			public void run(){
+				ImageIcon animExplo = new ImageIcon("Images\\explosion.gif");
+				lblexplo.setVisible(true);
+				lblexplo.setIcon(animExplo);
+			}	
+		}, 650);
 	}
 }

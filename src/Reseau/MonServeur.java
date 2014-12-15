@@ -2,12 +2,9 @@ package Reseau;
 
 import java.io.*;
 import java.net.*;
-import java.util.ArrayList;
 
 public class MonServeur extends ServerSocket implements Runnable {
-	public Socket getClient() {
-		return Client;
-	}
+
 
 
 	private BufferedReader inServ;
@@ -15,9 +12,14 @@ public class MonServeur extends ServerSocket implements Runnable {
 	private String info;
 	private Socket Client;
 	
+	public Socket getClient() {
+		return Client;
+	}
+	
 
 	public MonServeur(int port) throws Exception {
 		super(port, 1, InetAddress.getLocalHost());
+		System.out.println(InetAddress.getLocalHost());
 	}
 	
 	public synchronized void envoiInfo(String infoSortie) throws IOException{
@@ -46,7 +48,9 @@ public class MonServeur extends ServerSocket implements Runnable {
 	
 	
 	public void run(){
-		try{ this.Client = this.accept();
+		try{ Client= this.accept();
+		System.out.println(this.Client.getLocalAddress());
+		if (this.getClient().isConnected()) System.out.println("le client est connecté");
 		}catch (IOException e1) {
 			e1.printStackTrace();
 		}

@@ -3,15 +3,11 @@ package Vue;
 import javax.swing.*;
 
 import java.awt.*;
-import java.io.IOException;
-import java.net.URL;
-
-
+import java.io.*;
+import java.net.*;
+import java.util.*;
 
 import Jeu.Combat;
-
-import java.util.Observer;
-
 import Controller.*;
 import Jeu.*;
 
@@ -63,6 +59,6 @@ public class Vue extends JFrame {
 						
 		}
 		this.setContentPane(panels[numPanel]);	
-	}	
+	}
 }
 

@@ -31,12 +31,20 @@ public class JPanelClientServeur extends JPanel {
 		add(panel);
 		panel.setLayout(null);
 		
-		JButton btnServeur = new JButton("Cr\u00E9er un serveur");
+		JButton btnServeur = new JButton("Créer un serveur");
 		btnServeur.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				numPort = Integer.parseInt(textPort.getText());
+				System.out.println("port creation serveur " +numPort);
 				controleur.connexionServeur(numPort);
+				while(controleur.getServeur().getClient() == null){
+					System.out.println("en attente d'un client");
+					try {
+						Thread.sleep(1000);
+					} catch (Exception e) {}
+				}
+				controleur.start();
 			}
 		});
 		btnServeur.setBounds(200, 257, 200, 50);
@@ -47,15 +55,11 @@ public class JPanelClientServeur extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				numPort = Integer.parseInt(textPort.getText());
+				System.out.println("port rejoindre serveur " +numPort);
 				ip = textIP.getText();
+				System.out.println("ip rejoindre serveur "+ ip);
 				controleur.connexionClient(ip, numPort);
-				try {
-					Thread.sleep(20000);
-				} catch (InterruptedException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				if(controleur.isConnected()) controleur.start();
+				if(controleur.ClientConnected()) controleur.start();
 			}
 		});
 		btnClient.setBounds(200, 350, 200, 50);

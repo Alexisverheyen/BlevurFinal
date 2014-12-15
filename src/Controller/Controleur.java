@@ -180,8 +180,15 @@ public class Controleur {
 		}
 	}
 	
-	public boolean isConnected(){
-		if(serveur.getClient().isConnected()){
+	public boolean ServeurConnected(){
+		if(serveur.isBound()){
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean ClientConnected(){
+		if(client.isConnected()){
 			return true;
 		}
 		return false;

@@ -13,13 +13,14 @@ public class MonClient extends Socket implements Runnable{
 	
 	public MonClient(String ip, int port) throws Exception {
 		super(ip, port);
+		creerClient(ip , port);
 		this.port = port;
 		this.ip= ip;
 	}
 	
-	public void creerClient(){
+	public void creerClient(String ip, int port){
 		try{
-			this.Client = new Socket(this.ip, this.port);
+			this.Client = new Socket(ip, port);
 		} catch (Exception e) {
 			System.out.println("erreur creation client");
 			}
@@ -60,15 +61,9 @@ public class MonClient extends Socket implements Runnable{
 			Thread.sleep(100);
 		}catch (Exception e) {}
 		
-		while (Client == null){
-			creerClient();
-			try { 
-				Thread.sleep(200); 
-			} catch (Exception e){}
-		}
 		
-		while (!Client.isClosed()){
-			if (Client.isConnected()){
+		while (!this.Client.isClosed()){
+			if (this.Client.isConnected()){
 				lectureInfo();
 			}
 		}
